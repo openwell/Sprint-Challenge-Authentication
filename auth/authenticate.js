@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-const db = require('../database/user-model')
-const md5 = require('md5')
+const db = require("../database/user-model");
+const md5 = require("md5");
 
 const jwtKey =
   process.env.JWT_SECRET ||
@@ -22,7 +22,7 @@ function authenticate(req, res, next) {
     jwt.verify(token, jwtKey, (err, decoded) => {
       if (err) return res.status(401).json(err);
       req.decoded = decoded;
-      console.log(decoded)
+      console.log(decoded);
       next();
     });
   } else {
@@ -85,10 +85,9 @@ async function validateUserPassword(req, res, next) {
       },
       process.env.jwt_SECRET || jwtKey
     );
-    req.user = {token:Encrypted};
+    req.user = { token: Encrypted };
     next();
   } catch (err) {
-    console.log(err)
     return res.status(401).json({ error: "Incorrect Username" });
   }
 }

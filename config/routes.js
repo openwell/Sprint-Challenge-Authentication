@@ -23,7 +23,7 @@ function register(req, res) {
   };
   db.createUser(data)
     .then(dbResponse => {
-      return res.status(200).json({
+      return res.status(201).json({
         data: dbResponse
       });
     })
