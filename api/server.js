@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const configureRoutes = require("../config/routes.js");
+require('dotenv').config()
 
 const server = express();
 

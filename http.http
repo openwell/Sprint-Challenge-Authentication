@@ -1,7 +1,7 @@
 ### 
-GET http://localhost:3300/api/jokes
-
-
+GET http://localhost:3300/api/jokes HTTP/1.1
+  content-type: application/json 
+  authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjQxNDA1MzgsImRhdGEiOjEsImlhdCI6MTU2NDEzNjkzOH0.hDOJAlqliDLHdgdKtdakRFmEUJlNN7-AGzSFTQQKY3Q
 ### 
 POST http://localhost:3300/api/register HTTP/1.1
   content-type: application/json 
@@ -14,7 +14,7 @@ POST http://localhost:3300/api/register HTTP/1.1
 ### 
 POST http://localhost:3300/api/login HTTP/1.1
   content-type: application/json 
-
+  
   {
     "username": "TomBradly",
     "password": "123456"

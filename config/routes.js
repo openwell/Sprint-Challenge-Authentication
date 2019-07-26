@@ -37,7 +37,7 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
-  res.status(200).json({message: 'Welcome'})
+  res.status(200).json({message: 'Welcome', token: req.user.token})
 }
 
 function getJokes(req, res) {

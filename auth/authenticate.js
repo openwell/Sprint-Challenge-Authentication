@@ -22,6 +22,7 @@ function authenticate(req, res, next) {
     jwt.verify(token, jwtKey, (err, decoded) => {
       if (err) return res.status(401).json(err);
       req.decoded = decoded;
+      console.log(decoded)
       next();
     });
   } else {
@@ -77,6 +78,14 @@ async function validateUserPassword(req, res, next) {
     if (!compareOutput) {
       return res.status(401).json({ error: "Incorrect Password" });
     }
+    const Encrypted = jwt.sign(
+      {
+        exp: Math.floor(Date.now() / 1000) + 60 * 60,
+        data: userData.id
+      },
+      process.env.jwt_SECRET || jwtKey
+    );
+    req.user = {token:Encrypted};
     next();
   } catch (err) {
     console.log(err)
