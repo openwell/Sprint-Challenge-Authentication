@@ -16,5 +16,8 @@ function logger(req, res, next) {
   console.log(req.method, req.url, Date.now());
   next();
 }
+server.all("*", (req, res) => {
+  res.status(404).json("Sorry No Such Location");
+});
 
 module.exports = server;
