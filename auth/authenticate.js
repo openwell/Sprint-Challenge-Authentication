@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const db = require('../database/user-model')
+const md5 = require('md5')
 
 const jwtKey =
   process.env.JWT_SECRET ||
@@ -76,9 +77,9 @@ async function validateUserPassword(req, res, next) {
     if (!compareOutput) {
       return res.status(401).json({ error: "Incorrect Password" });
     }
-    req.session.user = userData;
     next();
   } catch (err) {
+    console.log(err)
     return res.status(401).json({ error: "Incorrect Username" });
   }
 }

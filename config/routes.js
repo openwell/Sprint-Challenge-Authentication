@@ -4,7 +4,8 @@ const db = require('../database/user-model')
 const {
   authenticate,
   myBcrypt,
-  validateUser
+  validateUser,
+  validateUserPassword
 } = require("../auth/authenticate");
 
 module.exports = server => {

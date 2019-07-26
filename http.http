@@ -1,9 +1,9 @@
 ### 
-GET http://localhost:5000/api/users 
+GET http://localhost:3300/api/jokes
 
 
 ### 
-POST http://localhost:5000/api/register HTTP/1.1
+POST http://localhost:3300/api/register HTTP/1.1
   content-type: application/json 
 
   {
@@ -12,7 +12,7 @@ POST http://localhost:5000/api/register HTTP/1.1
   }
 
 ### 
-POST http://localhost:5000/api/login HTTP/1.1
+POST http://localhost:3300/api/login HTTP/1.1
   content-type: application/json 
 
   {
@@ -20,5 +20,3 @@ POST http://localhost:5000/api/login HTTP/1.1
     "password": "123456"
   }
 
-###
-GET http://localhost:5000/api/logout HTTP/1.1
