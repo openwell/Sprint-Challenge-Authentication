@@ -8,8 +8,8 @@ const {
 } = require("../auth/authenticate");
 
 module.exports = server => {
-  server.post("/api/register",validateUser, register);
-  server.post("/api/login", login);
+  server.post("/api/register", validateUser, register);
+  server.post("/api/login", validateUser, validateUserPassword, login);
   server.get("/api/jokes", authenticate, getJokes);
 };
 
@@ -33,6 +33,7 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
+  res.status(200).json({message: 'Welcome'})
 }
 
 function getJokes(req, res) {

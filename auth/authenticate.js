@@ -9,7 +9,8 @@ module.exports = {
   authenticate,
   myBcrypt,
   compareMyBcrypt,
-  validateUser
+  validateUser,
+  validateUserPassword
 };
 
 // implementation details
@@ -67,4 +68,19 @@ function validateUser(req, res, next) {
     });
   }
   next();
+}
+
+async function validateUserPassword(req, res, next) {
+  const { username, password } = req.body;
+  try {
+    let userData = await db.getByUsername(username);
+    let compareOutput = compareMyBcrypt(password, userData.password);
+    if (!compareOutput) {
+      return res.status(401).json({ error: "Incorrect Password" });
+    }
+    req.session.user = userData;
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: "Incorrect Username" });
+  }
 }
