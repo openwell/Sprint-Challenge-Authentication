@@ -1,9 +1,9 @@
 const axios = require("axios");
+const db = require('../database/user-model')
 
 const {
   authenticate,
   myBcrypt,
-  compareMyBcrypt,
   validateUser
 } = require("../auth/authenticate");
 
@@ -27,6 +27,9 @@ function register(req, res) {
       });
     })
     .catch(err => {
+      if(err.code === "SQLITE_CONSTRAINT"){
+        return res.status(500).json({error: 'Username Already Exit'});
+      }
       res.status(500).send(err);
     });
 }
