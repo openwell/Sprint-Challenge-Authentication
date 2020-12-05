@@ -4,7 +4,8 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --verbose --coverage --watchAll"
   },
   "repository": {
     "type": "git",
@@ -12,6 +13,9 @@
   },
   "keywords": [],
   "author": "Lambda School",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LambdaSchool/Sprint-Challenge-Authentication/issues"
@@ -26,9 +30,14 @@
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.0",
+    "md5": "^2.2.1",
     "sqlite3": "^4.0.8"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "cross-env": "^5.2.0",
+    "eslint": "^6.1.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
